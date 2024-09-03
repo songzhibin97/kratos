@@ -165,7 +165,7 @@ func TestServer(t *testing.T) {
 	)
 
 	_, err = serverHandler(nextError)(ctx, "test:")
-	if err != e {
+	if !errors.Is(err, e) {
 		t.Error("The given error mismatch the expected.")
 		return
 	}
@@ -226,7 +226,7 @@ func TestClient(t *testing.T) {
 	)
 
 	_, err = clientHandler(nextError)(ctx, "test:")
-	if err != e {
+	if !errors.Is(err, e) {
 		t.Error("The given error mismatch the expected.")
 	}
 
